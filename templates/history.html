@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Scan history{% endblock %}
+{% block breadcrumb %}Scan history{% endblock %}
+{% block content %}
+<div class="page-heading"><div><div class="eyebrow">YOUR LOCAL ARCHIVE</div><h1>Scan history</h1><p>Review or remove past analysis summaries stored on this device.</p></div><a class="button button-primary" href="{{ url_for('upload_page') }}">＋ New analysis</a></div>
+<section class="panel dashboard-panel">
+{% if scans %}<div class="table-wrap"><table class="data-table"><thead><tr><th>Dataset</th><th>Rows</th><th>Columns</th><th>Anomaly candidates</th><th>Created</th><th>Actions</th></tr></thead><tbody>{% for scan in scans %}<tr><td><a class="table-file" href="{{ url_for('scan_detail', scan_id=scan.id) }}"><span class="file-icon small">▤</span>{{ scan.filename }}</a></td><td>{{ scan.rows|int }}</td><td>{{ scan.columns }}</td><td><span class="count-pill">{{ scan.anomalies if scan.anomalies is not none else '—' }}</span></td><td>{{ scan.created_at[:10] }}</td><td class="action-cell"><a class="row-arrow" title="Open analysis" href="{{ url_for('scan_detail', scan_id=scan.id) }}">↗</a><a class="row-arrow" title="Download PDF" href="{{ url_for('download_report', scan_id=scan.id) }}">↓</a><form method="post" action="{{ url_for('delete_scan', scan_id=scan.id) }}" data-confirm="Delete this scan summary? The original CSV was not retained."><button class="row-arrow delete-button" type="submit" aria-label="Delete {{ scan.filename }}">×</button></form></td></tr>{% endfor %}</tbody></table></div>{% else %}<div class="empty-state"><span class="empty-icon">◷</span><h3>Nothing in your history yet</h3><p>Your completed scans will show up here.</p><a class="button button-primary" href="{{ url_for('upload_page') }}">Upload a dataset</a></div>{% endif %}
+</section>
+<div class="privacy-banner"><span class="privacy-dot"></span>Only analysis summaries are saved. Uploaded CSV files are processed in memory and discarded.</div>
+{% endblock %}

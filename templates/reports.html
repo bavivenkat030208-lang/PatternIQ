@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Reports{% endblock %}
+{% block breadcrumb %}Reports{% endblock %}
+{% block content %}
+<div class="page-heading"><div><div class="eyebrow">SHAREABLE, EXPLAINABLE FINDINGS</div><h1>Reports</h1><p>Download a concise PDF summary for any scan in your local archive.</p></div></div>
+<section class="panel dashboard-panel">
+{% if scans %}<div class="table-wrap"><table class="data-table"><thead><tr><th>Dataset</th><th>Records</th><th>Groups</th><th>Unusual records</th><th>Report</th></tr></thead><tbody>{% for scan in scans %}<tr><td><a class="table-file" href="{{ url_for('scan_detail', scan_id=scan.id) }}"><span class="file-icon small">▤</span>{{ scan.filename }}</a></td><td>{{ scan.rows|int }}</td><td>{{ scan.groups if scan.groups is not none else '—' }}</td><td><span class="count-pill">{{ scan.anomalies if scan.anomalies is not none else '—' }}</span></td><td><a class="button button-small button-secondary" href="{{ url_for('download_report', scan_id=scan.id) }}">↓ PDF report</a></td></tr>{% endfor %}</tbody></table></div>{% else %}<div class="empty-state"><span class="empty-icon">▤</span><h3>Your reports will appear here</h3><p>Run a dataset analysis to generate your first downloadable report.</p><a class="button button-primary" href="{{ url_for('upload_page') }}">Analyze a dataset</a></div>{% endif %}
+</section>
+{% endblock %}

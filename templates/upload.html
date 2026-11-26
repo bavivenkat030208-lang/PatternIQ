@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Upload dataset{% endblock %}
+{% block breadcrumb %}Upload dataset{% endblock %}
+{% block content %}
+<div class="page-heading"><div><div class="eyebrow">START WITH A CSV</div><h1>Bring your data in.</h1><p>We'll take a first look — from data quality to patterns you might have missed.</p></div></div>
+<div class="upload-layout">
+  <section class="panel upload-panel">
+    <form method="post" enctype="multipart/form-data" id="upload-form">
+      <label class="dropzone" for="dataset" id="dropzone">
+        <input type="file" id="dataset" name="dataset" accept=".csv,text/csv" required>
+        <span class="upload-icon">↑</span>
+        <strong id="file-name">Drop your CSV here, or <span>browse files</span></strong>
+        <small id="file-meta">CSV only · Up to 16 MB · Max 100,000 rows and 100 columns</small>
+        <span class="dropzone-tag">PRIVATE & LOCAL</span>
+      </label>
+      <div class="upload-actions"><span class="privacy-line"><span class="privacy-dot"></span>Your original file is not retained after analysis.</span><button class="button button-primary" type="submit">Analyze dataset <span>↗</span></button></div>
+    </form>
+  </section>
+  <aside class="upload-aside">
+    <div class="panel checklist-panel"><div class="eyebrow">WHAT HAPPENS NEXT</div><h3>A thoughtful first pass.</h3>
+      <div class="check-item"><span>01</span><div><strong>Quality check</strong><small>Missing values, duplicates & column types</small></div></div>
+      <div class="check-item"><span>02</span><div><strong>Pattern discovery</strong><small>Clusters, relationships & PCA projection</small></div></div>
+      <div class="check-item"><span>03</span><div><strong>Unusual records</strong><small>Outlier candidates for a closer look</small></div></div>
+    </div>
+    <div class="note-card"><span class="note-icon">✳</span><p><strong>A note on anomalies</strong><br>Unusual doesn't mean incorrect. Treat these records as leads for investigation, not verdicts.</p></div>
+  </aside>
+</div>
+{% endblock %}

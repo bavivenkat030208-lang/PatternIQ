@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Discover your data{% endblock %}
+{% block breadcrumb %}Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR DATA, WITH A NEW PERSPECTIVE</div>
+    <h1>Find the signal<br>in your <span>data.</span></h1>
+    <p>PatternIQ uncovers groups, relationships and unusual records in your CSVs — with transparent, explainable machine learning.</p>
+    <div class="hero-actions"><a class="button button-primary" href="{{ url_for('upload_page') }}">Start exploring <span>↗</span></a><a class="text-link" href="{{ url_for('about') }}">How it works <span>→</span></a></div>
+    <div class="hero-trust"><span>✓ No external AI</span><span>✓ Your files stay local</span><span>✓ No accuracy theater</span></div>
+  </div>
+  <div class="hero-art" aria-label="Illustration of clustered data points">
+    <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+    <div class="chart-grid"></div>
+    <div class="chart-axis axis-x"></div><div class="chart-axis axis-y"></div>
+    <span class="scatter s1"></span><span class="scatter s2"></span><span class="scatter s3"></span><span class="scatter s4"></span><span class="scatter s5"></span><span class="scatter s6"></span><span class="scatter s7"></span><span class="scatter s8"></span><span class="scatter s9"></span><span class="scatter s10"></span><span class="scatter s11"></span><span class="scatter s12"></span><span class="scatter s13"></span><span class="scatter s14"></span><span class="scatter s15"></span><span class="scatter s16"></span>
+    <div class="art-label label-one"><span class="legend-dot purple-dot"></span> Feature space</div>
+    <div class="art-label label-two"><span class="legend-dot cyan-dot"></span> Possible groups</div>
+    <div class="art-caption">Illustrative view · your results come from your data <span>✳</span></div>
+  </div>
+</section>
+<section class="feature-strip">
+  <article class="feature-mini"><span class="mini-icon lavender">✳</span><div><h3>Discover groups</h3><p>K-Means finds similar records in your dataset.</p></div></article>
+  <article class="feature-mini"><span class="mini-icon coral">⌁</span><div><h3>Spot the unusual</h3><p>Isolation Forest surfaces records worth a closer look.</p></div></article>
+  <article class="feature-mini"><span class="mini-icon mint">↗</span><div><h3>Understand links</h3><p>Explore correlations and feature relationships.</p></div></article>
+</section>
+<section class="home-bottom">
+  <div class="section-heading"><div><div class="eyebrow">YOUR WORKSPACE</div><h2>Recent scans</h2></div><a class="text-link" href="{{ url_for('history') }}">View history →</a></div>
+  {% if recent_scans %}<div class="recent-grid">{% for scan in recent_scans %}<a class="recent-card" href="{{ url_for('scan_detail', scan_id=scan.id) }}"><span class="file-icon">▤</span><span class="recent-info"><strong>{{ scan.filename }}</strong><small>{{ scan.rows|int }} rows · {{ scan.columns }} columns</small></span><span class="recent-arrow">↗</span></a>{% endfor %}</div>{% else %}<div class="empty-inline"><span class="empty-icon">◷</span><div><strong>Your next discovery starts here.</strong><p>Upload a CSV and your scans will appear here.</p></div><a class="button button-secondary" href="{{ url_for('upload_page') }}">Upload a dataset</a></div>{% endif %}
+</section>
+{% endblock %}

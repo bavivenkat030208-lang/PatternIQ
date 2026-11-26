@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1120">
+  <title>{% block title %}PatternIQ{% endblock %} · PatternIQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-matrix@2.0.1/dist/chartjs-chart-matrix.min.js" defer></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">P</span><span>pattern<span class="brand-light">iq</span></span></a>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a class="nav-link {{ 'active' if page == 'dashboard' else '' }}" href="{{ url_for('dashboard') }}"><span>▦</span> Dashboard</a>
+      <a class="nav-link {{ 'active' if page == 'upload' else '' }}" href="{{ url_for('upload_page') }}"><span>↑</span> Upload dataset</a>
+      <a class="nav-link {{ 'active' if page == 'patterns' else '' }}" href="{{ url_for('patterns') }}"><span>✳</span> Pattern analysis</a>
+      <a class="nav-link {{ 'active' if page == 'anomalies' else '' }}" href="{{ url_for('anomalies') }}"><span>⌁</span> Anomaly detection</a>
+      <a class="nav-link {{ 'active' if page == 'reports' else '' }}" href="{{ url_for('reports') }}"><span>▤</span> Reports</a>
+      <a class="nav-link {{ 'active' if page == 'history' else '' }}" href="{{ url_for('history') }}"><span>◷</span> Scan history</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="nav-link {{ 'active' if page == 'about' else '' }}" href="{{ url_for('about') }}"><span>ⓘ</span> About PatternIQ</a>
+      <div class="privacy-note"><span class="privacy-dot"></span><span><strong>Private by design</strong><small>Files are analyzed locally</small></span></div>
+      <div class="user-chip"><span class="avatar">PI</span><span><strong>Local workspace</strong><small>Personal analytics</small></span></div>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-button" aria-label="Toggle navigation" aria-expanded="false" data-menu-toggle>☰</button>
+      <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><strong>{% block breadcrumb %}Overview{% endblock %}</strong></div>
+      <a class="topbar-upload" href="{{ url_for('upload_page') }}"><span>＋</span> New analysis</a>
+    </header>
+    <div class="page-content">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}<div class="flash-list">{% for category, message in messages %}<div class="flash {{ category }}" role="status">{{ message }}</div>{% endfor %}</div>{% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+      <footer class="footer"><span>PatternIQ · Open-source data discovery</span><span>Built for curious minds <span class="footer-star">✳</span></span></footer>
+    </div>
+  </main>
+</body>
+</html>

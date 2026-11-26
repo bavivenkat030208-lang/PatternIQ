@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block breadcrumb %}About{% endblock %}
+{% block content %}
+<div class="page-heading"><div><div class="eyebrow">TRANSPARENT BY DESIGN</div><h1>Make room for discovery.</h1><p>PatternIQ is an open-source, local-first starting point for making sense of tabular data.</p></div></div>
+<section class="about-grid">
+  <article class="panel about-card"><span class="mini-icon lavender">✳</span><h2>Patterns, not labels</h2><p>K-Means groups records by similarity after numerical scaling and categorical encoding. Groups are exploratory, and their IDs have no intrinsic meaning.</p></article>
+  <article class="panel about-card"><span class="mini-icon coral">⌁</span><h2>Outliers, not accusations</h2><p>Isolation Forest flags unusual records relative to this dataset. It cannot determine whether a record is a mistake, a rare but valid case, or anything else.</p></article>
+  <article class="panel about-card"><span class="mini-icon mint">↗</span><h2>Relationships, not causes</h2><p>Correlation describes linear association between numeric columns. It does not show that one feature causes another.</p></article>
+  <article class="panel about-card"><span class="mini-icon gold">⌗</span><h2>Responsible summaries</h2><p>Every analysis includes data quality context, feature profiles and a deterministic sample for modeling large files. No made-up model accuracy.</p></article>
+</section>
+<section class="privacy-banner"><span class="privacy-dot"></span>Data stays on this machine: CSV uploads are processed in memory and discarded. Only compact analysis summaries are stored in a local SQLite database.</section>
+<section class="panel tech-panel"><div class="eyebrow">OPEN-SOURCE TOOLKIT</div><div class="tech-list"><span>Python</span><span>Flask</span><span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>Chart.js</span><span>SQLite</span><span>ReportLab</span></div></section>
+{% endblock %}

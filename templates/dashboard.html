@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block breadcrumb %}Dashboard{% endblock %}
+{% block content %}
+<div class="page-heading"><div><div class="eyebrow">YOUR DATA WORKSPACE</div><h1>Dashboard</h1><p>A clear view of your exploration so far.</p></div><a class="button button-primary" href="{{ url_for('upload_page') }}">＋ Analyze a dataset</a></div>
+<div class="stat-grid">
+  <article class="stat-card"><div class="stat-label">Total scans <span class="stat-glyph lavender">▦</span></div><div class="stat-value">{{ total_scans }}</div><div class="stat-foot">In your local workspace</div></article>
+  <article class="stat-card"><div class="stat-label">Latest dataset <span class="stat-glyph mint">▤</span></div><div class="stat-value stat-text">{{ scans[0].filename if scans else '—' }}</div><div class="stat-foot">{% if scans %}{{ scans[0].rows|int }} records analyzed{% else %}Ready for your first upload{% endif %}</div></article>
+  <article class="stat-card"><div class="stat-label">Unusual records <span class="stat-glyph coral">⌁</span></div><div class="stat-value">{% if scans and scans[0].anomalies is not none %}{{ scans[0].anomalies }}{% else %}—{% endif %}</div><div class="stat-foot">From your most recent scan</div></article>
+</div>
+<section class="panel dashboard-panel"><div class="section-heading"><div><div class="eyebrow">RECENT ACTIVITY</div><h2>Your scans</h2></div><a class="text-link" href="{{ url_for('history') }}">All scans →</a></div>
+  {% if scans %}<div class="table-wrap"><table class="data-table"><thead><tr><th>Dataset</th><th>Rows</th><th>Columns</th><th>Unusual records</th><th>Created</th><th></th></tr></thead><tbody>{% for scan in scans %}<tr><td><a class="table-file" href="{{ url_for('scan_detail', scan_id=scan.id) }}"><span class="file-icon small">▤</span>{{ scan.filename }}</a></td><td>{{ scan.rows|int }}</td><td>{{ scan.columns }}</td><td><span class="count-pill">{{ scan.anomalies if scan.anomalies is not none else '—' }}</span></td><td>{{ scan.created_at[:10] }}</td><td><a class="row-arrow" href="{{ url_for('scan_detail', scan_id=scan.id) }}">↗</a></td></tr>{% endfor %}</tbody></table></div>{% else %}<div class="empty-state"><span class="empty-icon">▦</span><h3>A fresh start</h3><p>Analyze a CSV to see your scan activity here.</p><a class="button button-primary" href="{{ url_for('upload_page') }}">Upload your first dataset</a></div>{% endif %}
+</section>
+{% endblock %}
