@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1120">
+  <title>PatternIQ - Intelligent Data Discovery</title>
+  <style>
+    :root { --bg:#0c1020; --panel:#151b30; --line:#282f48; --text:#f3f4fb; --muted:#9aa3b9; --purple:#9b83ff; --mint:#73e0c3; }
+    * { box-sizing:border-box; } body { margin:0; min-height:100vh; font-family:Inter,Segoe UI,sans-serif; color:var(--text); background:radial-gradient(circle at 75% 20%,#29244b 0,#14172b 28%,var(--bg) 70%); }
+    .shell { width:min(1120px,calc(100% - 36px)); margin:auto; } nav { height:82px; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:flex; align-items:center; gap:10px; color:white; text-decoration:none; font-size:20px; font-weight:800; } .mark { width:34px; height:34px; display:grid; place-items:center; border-radius:10px; background:linear-gradient(140deg,#9d83ff,#704cf0); }
+    .nav-links { display:flex; gap:10px; } .nav-links a,.button { display:inline-flex; align-items:center; justify-content:center; min-height:40px; padding:0 15px; border-radius:8px; text-decoration:none; font-size:13px; font-weight:700; }
+    .nav-links a { color:#cfd3e3; border:1px solid var(--line); }.button-primary { color:white; background:linear-gradient(120deg,#8261f5,#7250e5); }.button-secondary { color:#d4cbff; background:#201e36; border:1px solid #433a67; }
+    .hero { min-height:610px; display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:30px; } .eyebrow { color:#aa9bdc; font-size:11px; font-weight:800; letter-spacing:1.8px; }
+    h1 { max-width:650px; margin:18px 0 16px; font-size:clamp(54px,7vw,82px); line-height:.98; letter-spacing:-4px; } h1 span { color:#a893ff; } .hero p { max-width:590px; color:#aab1c4; font-size:17px; line-height:1.75; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }.trust { display:flex; flex-wrap:wrap; gap:16px; margin-top:24px; color:#8790a7; font-size:11px; }.trust b { color:var(--mint); }
+    .art { position:relative; min-height:450px; border:1px solid var(--line); border-radius:20px; background:linear-gradient(145deg,#1a1f37,#17152c); overflow:hidden; box-shadow:0 30px 80px #07091266; }
+    .grid { position:absolute; inset:0; background-image:linear-gradient(#ffffff09 1px,transparent 1px),linear-gradient(90deg,#ffffff09 1px,transparent 1px); background-size:38px 38px; }.orb { position:absolute; border-radius:50%; filter:blur(.2px); box-shadow:0 0 18px currentColor; }
+    .orb.p { color:#a78bfa; background:currentColor; }.orb.c { color:#62cbd3; background:currentColor; }.p1{width:13px;height:13px;top:27%;left:24%}.p2{width:9px;height:9px;top:38%;left:34%}.p3{width:15px;height:15px;top:49%;left:27%}.p4{width:8px;height:8px;top:61%;left:40%}.p5{width:11px;height:11px;top:35%;left:48%}.c1{width:12px;height:12px;top:29%;left:69%}.c2{width:9px;height:9px;top:42%;left:79%}.c3{width:15px;height:15px;top:58%;left:67%}.c4{width:8px;height:8px;top:72%;left:82%}
+    .label { position:absolute; padding:10px 12px; color:#cbd0df; font-size:11px; background:#111628dd; border:1px solid #3a405a; border-radius:8px; }.label strong { display:block; margin-top:4px; color:white; }.l1{top:13%;left:10%}.l2{right:8%;bottom:15%}
+    .features { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:55px; }.feature { min-height:120px; padding:20px; background:#141a2dd9; border:1px solid var(--line); border-radius:12px; }.feature span { color:#b2a2f8; font-size:20px; }.feature h2 { margin:12px 0 7px; font-size:15px; }.feature p { margin:0; color:var(--muted); font-size:12px; line-height:1.65; }
+    .notice { margin:-20px 0 35px; padding:15px 17px; color:#aeb5c7; font-size:12px; line-height:1.65; background:#172625; border:1px solid #29443f; border-radius:10px; } footer { display:flex; justify-content:space-between; padding:20px 0 35px; color:#747d94; font-size:11px; border-top:1px solid #202640; }
+    @media(max-width:780px){ nav { height:68px; }.nav-links a { display:none; }.hero { grid-template-columns:1fr; padding:45px 0 30px; }.hero h1 { font-size:52px; letter-spacing:-3px; }.hero p { font-size:15px; }.art { min-height:300px; }.features { grid-template-columns:1fr; }.shell { width:min(100% - 28px,1120px); } footer { flex-direction:column; gap:8px; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav><a class="brand" href="./"><span class="mark">P</span><span>patterniq</span></a><div class="nav-links"><a href="#features">Features</a><a class="button-primary" href="https://github.com/viswanaath030105-sys/PatternIQ">View source ↗</a></div></nav>
+    <main>
+      <section class="hero">
+        <div><div class="eyebrow">INTELLIGENT DATA DISCOVERY</div><h1>Find the signal in your <span>data.</span></h1><p>PatternIQ profiles CSV datasets, discovers similar record groups, explores numeric relationships, surfaces anomaly candidates, and creates transparent analysis reports.</p><div class="actions"><a class="button button-primary" href="https://github.com/viswanaath030105-sys/PatternIQ#run-in-vs-code">Run PatternIQ locally ↗</a><a class="button button-secondary" href="https://github.com/viswanaath030105-sys/PatternIQ">Open repository →</a></div><div class="trust"><span><b>✓</b> Local processing</span><span><b>✓</b> Open-source models</span><span><b>✓</b> No made-up accuracy</span></div></div>
+        <div class="art" aria-label="Illustration of clustered data points"><div class="grid"></div><i class="orb p p1"></i><i class="orb p p2"></i><i class="orb p p3"></i><i class="orb p p4"></i><i class="orb p p5"></i><i class="orb c c1"></i><i class="orb c c2"></i><i class="orb c c3"></i><i class="orb c c4"></i><div class="label l1">Feature space<strong>Exploratory analysis</strong></div><div class="label l2">Unsupervised learning<strong>Patterns, not verdicts</strong></div></div>
+      </section>
+      <div class="notice"><strong>GitHub Pages limitation:</strong> This page is a static project introduction. CSV upload, Flask routes, SQLite history, and machine-learning execution require the Flask application to run in a Python server or locally in VS Code.</div>
+      <section class="features" id="features"><article class="feature"><span>✳</span><h2>Discover groups</h2><p>K-Means finds exploratory clusters after numerical scaling and categorical encoding.</p></article><article class="feature"><span>⌁</span><h2>Spot unusual records</h2><p>Isolation Forest surfaces candidates for investigation, not proof of errors or fraud.</p></article><article class="feature"><span>↗</span><h2>Understand relationships</h2><p>Correlation and PCA views reveal numeric associations and feature structure.</p></article></section>
+    </main>
+    <footer><span>PatternIQ · Open-source data discovery</span><span>Built for curious minds ✳</span></footer>
+  </div>
+</body>
+</html>
